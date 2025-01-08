@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: spring-boot-api-appset
+spec:
+  generators:
+    - list:
+        elements:
+          - name: dev
+            cluster: dev-global-cluster-0
+            url: https://kubernetes.default.svc
+            valuesFile: dev-values.yaml
+          - name: prd
+            cluster: prd-global-cluster-5
+            url: https://kubernetes.default.svc
+            valuesFile: prd-values.yaml
+  template:
+    metadata:
+      name: '{{name}}-spring-boot-api'
+    spec:
+      project: my-argo-project
+      source:
+        repoURL: 'https://github.com/mpietrzak384/spring-boot-api-argocd.git'
+        targetRevision: HEAD
+        chart: chart
+        helm:
+          releaseName: 1.0.0
+          valueFiles:
+            - envs/{{valuesFile}}
+      destination:
+        server: '{{url}}'
+        namespace: spring-boot-api
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
