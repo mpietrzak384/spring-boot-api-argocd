@@ -1,0 +1,25 @@
+nameOverride:
+fullnameOverride:
+
+image:
+  repository: busybox
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 1  # Default replica count, can be overridden in environment values
+activeProfile: "dev"  # Default spring profile, overridden in environment values
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "256Mi"
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  host: "default.host"   # Will be overridden by environment values
