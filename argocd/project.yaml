@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: spring-boot-api
+  namespace: argocd
+spec:
+  description: "Sprint Boot Api application"
+  destinations:
+    - namespace: spring-boot-api-dev
+      server: https://kubernetes.default.svc  # Cluster where apps will be deployed (internal default)
+    - namespace: spring-boot-api-prd
+      server: https://kubernetes.default.svc  # Cluster where apps will be deployed (internal default)
+  sourceRepos:
+    - 'https://github.com/mpietrzak384/spring-boot-api-argocd.git'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  syncWindows: []
