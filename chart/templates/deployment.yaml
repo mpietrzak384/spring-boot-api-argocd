@@ -31,8 +31,7 @@ spec:
             - containerPort: 8081
             - containerPort: 8082
           args:
-            - "--spring.profiles.active"
-            - "{{ .Values.activeProfile }}"
+            - "--spring.profiles.active={{ .Values.activeProfile }}"
           envFrom:
             - secretRef:
                 name: {{ include "spring-boot-api.fullname" . }}-secret
