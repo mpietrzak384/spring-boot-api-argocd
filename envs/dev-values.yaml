@@ -1,0 +1,5 @@
+replicaCount: 3
+activeProfile: "dev"
+
+ingress:
+  host: "dev.example.com"

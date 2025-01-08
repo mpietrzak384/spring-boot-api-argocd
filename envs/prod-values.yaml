@@ -1,0 +1,5 @@
+replicaCount: 5
+activeProfile: "prd"
+
+ingress:
+  host: "prod.example.com"
