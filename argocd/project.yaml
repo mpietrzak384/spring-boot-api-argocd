@@ -12,6 +12,7 @@ spec:
       server: https://kubernetes.default.svc
   sourceRepos:
     - 'https://github.com/mpietrzak384/spring-boot-api-argocd.git'
+    - 'https://github.com/mpietrzak384/spring-boot-api-values.git'
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'

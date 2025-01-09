@@ -21,14 +21,17 @@ spec:
       name: '{{name}}-spring-boot-api'
     spec:
       project: spring-boot-api
-      source:
-        repoURL: 'https://github.com/mpietrzak384/spring-boot-api-argocd.git'
-        targetRevision: HEAD
-        path: chart
-        helm:
-          releaseName: alpha
-          valueFiles:
-            - '{{valuesFile}}'
+      sources:
+        - repoURL: 'https://github.com/mpietrzak384/spring-boot-api-argocd.git'
+          path: chart
+          targetRevision: HEAD
+          helm:
+            releaseName: alpha
+            valueFiles:
+            - $values/{{name}}/values.yaml
+        - repoURL: 'https://github.com/mpietrzak384/spring-boot-api-values.git'
+          targetRevision: HEAD
+          ref: values
       destination:
         server: '{{url}}'
         namespace: '{{namespace}}'

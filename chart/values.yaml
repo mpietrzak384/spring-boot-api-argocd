@@ -6,8 +6,8 @@ image:
   tag: stable
   pullPolicy: IfNotPresent
 
-replicaCount: 1  # Default replica count, can be overridden in environment values
-activeProfile: "dev"  # Default spring profile, overridden in environment values
+replicaCount: 1 
+activeProfile: "dev"
 
 resources:
   requests:
@@ -22,4 +22,4 @@ service:
 
 ingress:
   enabled: true
-  host: "default.host"   # Will be overridden by environment values
+  host: "default.host"
