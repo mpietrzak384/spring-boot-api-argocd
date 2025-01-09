@@ -9,12 +9,12 @@ spec:
           - name: dev
             cluster: dev-global-cluster-0
             url: https://kubernetes.default.svc
-            valuesFile: dev-values.yaml
+            valuesFile: https://raw.githubusercontent.com/mpietrzak384/spring-boot-api-argocd/refs/heads/main/envs/dev-values.yaml
             namespace: spring-boot-api-dev
           - name: prd
             cluster: prd-global-cluster-5
             url: https://kubernetes.default.svc
-            valuesFile: prd-values.yaml
+            valuesFile: https://raw.githubusercontent.com/mpietrzak384/spring-boot-api-argocd/refs/heads/main/envs/prd-values.yaml
             namespace: spring-boot-api-prd
   template:
     metadata:
@@ -28,7 +28,7 @@ spec:
         helm:
           releaseName: alpha
           valueFiles:
-            - ../envs/{{valuesFile}}
+            - '{{valuesFile}}'
       destination:
         server: '{{url}}'
         namespace: '{{namespace}}'

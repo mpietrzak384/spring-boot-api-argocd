@@ -7,9 +7,9 @@ spec:
   description: "Sprint Boot Api application"
   destinations:
     - namespace: spring-boot-api-dev
-      server: https://kubernetes.default.svc  # Cluster where apps will be deployed (internal default)
+      server: https://kubernetes.default.svc
     - namespace: spring-boot-api-prd
-      server: https://kubernetes.default.svc  # Cluster where apps will be deployed (internal default)
+      server: https://kubernetes.default.svc
   sourceRepos:
     - 'https://github.com/mpietrzak384/spring-boot-api-argocd.git'
   clusterResourceWhitelist:
